@@ -56,7 +56,8 @@ export class AiManager {
 
     const parsed = JSON.parse(fileContent);
     const template = parsed.commitTemplate?.trim();
-    const prev = parsed.prevCommits?.trim();
+    const prev = parsed.prevCommits
+    process.env.GROQ_API_KEY = parsed.groqKey;
 
     // -------- Dynamic block selection --------
     let dynamicBlock = "";
