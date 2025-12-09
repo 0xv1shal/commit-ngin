@@ -3,6 +3,31 @@ import chalk from "chalk";
 export class UiManager {
   constructor() {}
 
+  parseAndShowAiSuggestions(list: string[]) {
+    if (!list || list.length === 0) {
+      console.log(chalk.red("No AI suggestions available."));
+      return;
+    }
+
+    console.log(chalk.bold.cyan("\n=== AI Commit Suggestions ===\n"));
+
+    list.forEach((suggestion, index) => {
+      console.log(chalk.bold.green(`Suggestion ${index + 1}:`));
+
+      console.log(chalk.white(suggestion.trim()));
+
+      if (index !== list.length - 1) {
+        console.log(
+          chalk.gray("\n---------------------------------------------\n")
+        );
+      }
+    });
+
+    console.log(
+      chalk.bold.cyan("\n=============================================\n")
+    );
+  }
+
   /**
    * Modern, clean UI for the "no args / unknown flag" error
    */
@@ -14,18 +39,33 @@ export class UiManager {
 ${chalk.gray("Supported Commands")}
   ${chalk.green("--init")}      Initialize CommitNgin in your project
   ${chalk.green("--help")}      Show help and usage guide
+  ${chalk.green("--generate")}  generates commit suggestions
 `);
 
     const box = `
 ${title}
 
 ${msg}${supported}
-${chalk.gray("Run")} ${chalk.cyan("commitngin --help")} ${chalk.gray(
+${chalk.gray("Run")} ${chalk.cyan("commit-ngin --help")} ${chalk.gray(
       "for detailed usage."
     )}
 `;
 
     console.log(box);
+  }
+
+  printMoreThanOneArgsPassed() {
+    console.log(
+      chalk.red.bold("Error: ") +
+        chalk.red("More than one argument was passed, but only one is allowed.")
+    );
+
+    console.log(
+      chalk.yellow("Usage: ") +
+        chalk.white("commit-ngin <optional-single-argument>")
+    );
+
+    console.log(chalk.gray("Hint: Remove extra arguments and try again."));
   }
 
   printHelpUI() {
@@ -86,9 +126,23 @@ ${chalk.magentaBright.bold("\n◆   Supported Commands")}
 ${chalk.white(`
   ${chalk.cyan("--init")}        Initialize CommitNgin in your project
   ${chalk.cyan("--help")}        Show this legendary help menu
+  ${chalk.cyan("--generate")}    generates commit suggestions
 `)}
 
 ${center(chalk.gray("CommitNgin — Precision commits. Zero compromise."))}
 `);
+  }
+
+  printGenerateCommands() {
+    console.log(
+      chalk.white(`
+${chalk.cyan("------------------------------------------")}
+${chalk.green("Enter 1 or 2 or 3 to commit")}
+${chalk.blue("Press ENTER button to retry")}
+${chalk.yellow("type anything for passing to ai for improvement")}
+${chalk.red("type q to quit")}
+${chalk.cyan("------------------------------------------")}
+      `)
+    );
   }
 }
