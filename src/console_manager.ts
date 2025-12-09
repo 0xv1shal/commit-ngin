@@ -138,14 +138,13 @@ ${chalk.gray("No changes were made.")}
     });
 
     cmdPerformer.stdout.on("data", (data) => {
-      console.log(data);
     });
 
     const [code] = await once(cmdPerformer, "close");
     if (code === 0) {
       await this.#fileManager.appendCommit(msg);
-      console.log(chalk.bgWhite.green("SUCCESS !!!"));
-      console.log(chalk.bgWhite.yellow("Thanks for using ⊂(◉‿◉)つ"));
+      console.log(chalk.white.green("SUCCESS !!!"));
+      console.log(chalk.white.yellow("Thanks for using ⊂(◉‿◉)つ"));
     }
   }
 
