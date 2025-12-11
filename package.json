@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A fast, AI-powered CLI tool that analyzes your staged git diff and generates clear, high-quality commit message suggestions.",
   "bin": {
-    "commit-ngin":"./dist/index.js"
+    "commit-ngin":"dist/index.js"
   },
   "scripts": {
     "build": "tsc"
