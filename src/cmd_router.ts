@@ -11,19 +11,26 @@ export class CommandRouter {
   }
 
   async parseArgs(args: string[]): Promise<boolean> {
-    for (const arg of args) {
-      switch (arg) {
-        case "--init":
-          await this.#consoleManager.initCommitNgin();
-          return true;
-        case "--help":
-          this.#uiManager.printHelpUI();
-          return true;
-        default:
-          continue;
-      }
+    if (args.length !== 3) {
+      this.#uiManager.printMoreThanOneArgsPassed();
+      return false;
     }
-    
+
+    const arg = args.at(-1);
+
+    switch (arg) {
+      case "--init":
+        await this.#consoleManager.initCommitNgin();
+        return true;
+      case "--help":
+        this.#uiManager.printHelpUI();
+        return true;
+      case "--generate":
+        await this.#consoleManager.generateMsgs();
+        return true;
+      default:
+    }
+
     this.#uiManager.printNoArgsErrorUI();
     return false;
   }

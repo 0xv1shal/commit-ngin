@@ -1,17 +1,32 @@
 {
   "name": "commit-ngin",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A fast, AI-powered CLI tool that analyzes your staged git diff and generates clear, high-quality commit message suggestions.",
+  "bin": {
+    "commit-ngin":"./dist/index.js"
+  },
   "scripts": {
-    "dev": "tsc"
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/0xv1shal/commit-ngin.git"
   },
-  "keywords": [],
-  "author": "",
+  "files": ["dist"],
+  "keywords": [
+  "cli",
+  "git",
+  "git-commit",
+  "commit",
+  "commit-message",
+  "ai",
+  "llm",
+  "langchain",
+  "developer-tools",
+  "automation",
+  "productivity"
+],
+  "author": "Vishal Pandey",
   "license": "ISC",
   "type": "module",
   "bugs": {
@@ -21,10 +36,9 @@
   "dependencies": {
     "@langchain/core": "^1.1.4",
     "@langchain/groq": "^1.0.2",
+    "@langchain/langgraph": "^1.0.4",
     "chalk": "^5.6.2",
-    "install": "^0.13.0",
-    "langchain": "^1.1.5",
-    "npm": "^11.6.4"
+    "zod": "^4.1.13"
   },
   "devDependencies": {
     "@types/node": "^24.10.1",
