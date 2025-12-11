@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { CommandRouter } from "./cmd_router.js";
 
 

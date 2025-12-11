@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "rootDir": "src/",
-    "outDir": "dist/",
+    "rootDir": "src",
+    "outDir": "dist",
     "target": "ES2022",
     "module": "nodenext",
     "moduleResolution": "nodenext",
@@ -9,6 +9,8 @@
     "types": ["node"],
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "strict": true
-  }
+    "strict": true,
+    "verbatimModuleSyntax": true
+  },
+  "include": ["src"]
 }
